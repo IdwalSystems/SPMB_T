@@ -1,7 +1,7 @@
-﻿@model JBangsa
+﻿@model JGredGaji
 
 @{
-    ViewData["Title"] = "Bangsa - Hapus";
+    ViewData["Title"] = "Gred Gaji - Hapus";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="card box-shadow">
@@ -11,10 +11,16 @@
         <p class="text-danger">Anda pasti untuk menghapuskan maklumat berikut?</p>
         <dl class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Perihal)
+                @Html.DisplayNameFor(model => model.Kod)
             </dt>
             <dd class="col-sm-10">
-                @Model.Perihal?.ToUpper()
+                @Model.Kod?.ToUpper()
+            </dd>
+            <dt class="col-sm-2">
+                Klasifikasi Perkhidmatan
+            </dt>
+            <dd class="col-sm-10">
+                @Model.EnKlasifikasiPerkhidmatan.GetDisplayName()
             </dd>
         </dl>
 

@@ -1,7 +1,7 @@
-﻿@model IEnumerable<JBangsa>
+﻿@model IEnumerable<JNegeri>
 
 @{
-    ViewData["Title"] = "Bangsa";
+    ViewData["Title"] = "Negeri";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <partial name="_JSIndex" />
@@ -23,6 +23,9 @@
                     <thead class="table-secondary">
                         <tr>
                             <th width="5%">Bil</th>
+                            <th class="kod" width="5%">
+                                @Html.DisplayNameFor(model => model.Kod)
+                            </th>
                             <th class="perihal">
                                 @Html.DisplayNameFor(model => model.Perihal)
                             </th>
@@ -35,6 +38,9 @@
                             var tabletype = item.FlHapus == 1 ? "table-danger" : null;
                             <tr class="@tabletype text-uppercase">
                                 <td></td>
+                                <td>
+                                    @item.Kod
+                                </td>
                                 <td>
                                     @item.Perihal
                                 </td>

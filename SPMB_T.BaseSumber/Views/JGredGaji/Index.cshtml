@@ -1,7 +1,7 @@
-﻿@model IEnumerable<JBangsa>
+﻿@model IEnumerable<JGredGaji>
 
 @{
-    ViewData["Title"] = "Bangsa";
+    ViewData["Title"] = "Gred Gaji";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <partial name="_JSIndex" />
@@ -23,8 +23,11 @@
                     <thead class="table-secondary">
                         <tr>
                             <th width="5%">Bil</th>
+                            <th class="kod" width="5%">
+                                Kod
+                            </th>
                             <th class="perihal">
-                                @Html.DisplayNameFor(model => model.Perihal)
+                                Klasifikasi Perkhidmatan
                             </th>
                             <th width="5%"></th>
                         </tr>
@@ -36,7 +39,10 @@
                             <tr class="@tabletype text-uppercase">
                                 <td></td>
                                 <td>
-                                    @item.Perihal
+                                    @item.Kod
+                                </td>
+                                <td>
+                                    @item.EnKlasifikasiPerkhidmatan.GetDisplayName()
                                 </td>
                                 <td width="5%" class="text-center">
                                     <div class="btn-group" role="group" aria-label="action">

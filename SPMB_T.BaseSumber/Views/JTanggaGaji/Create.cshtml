@@ -1,7 +1,7 @@
-﻿@model JBangsa
+﻿@model JTanggaGaji
 
 @{
-    ViewData["Title"] = "Bangsa - Tambah";
+    ViewData["Title"] = "Tangga Gaji - Tambah";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="card box-shadow">
@@ -12,9 +12,14 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input name="syscode" value="SPSU" hidden />
             <div class="form-group">
-                <label asp-for="Perihal" class="control-label"></label>
-                <input asp-for="Perihal" class="form-control form-control-sm text-uppercase" onkeydown="return /[a-zA-Z]/i.test(event.key)" />
-                <span asp-validation-for="Perihal" class="text-danger"></span>
+                <label asp-for="KodSSPA" class="control-label"></label>
+                <input asp-for="KodSSPA" class="form-control form-control-sm text-uppercase" onkeydown="return /[a-zA-Z]/i.test(event.key)" />
+                <span asp-validation-for="KodSSPA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KodSSM" class="control-label"></label>
+                <input asp-for="KodSSM" class="form-control form-control-sm text-uppercase" onkeydown="return /[a-zA-Z]/i.test(event.key)" />
+                <span asp-validation-for="KodSSM" class="text-danger"></span>
             </div>
 
             <hr />

@@ -81,6 +81,24 @@ namespace SPMB_T.__Domain.Entities._Statics
             new Claim(Modules.kodJPTJ + "E",Modules.namaJPTJ + " : Ubah"),
             new Claim(Modules.kodJPTJ + "D",Modules.namaJPTJ + " : Hapus"),
             new Claim(Modules.kodJPTJ + "R",Modules.namaJPTJ + " : Rollback"),
+
+            new Claim(Modules.kodJKategoriPCB,Modules.namaJKategoriPCB),
+            new Claim(Modules.kodJKategoriPCB + "C",Modules.namaJKategoriPCB + " : Tambah"),
+            new Claim(Modules.kodJKategoriPCB + "E",Modules.namaJKategoriPCB + " : Ubah"),
+            new Claim(Modules.kodJKategoriPCB + "D",Modules.namaJKategoriPCB + " : Hapus"),
+            new Claim(Modules.kodJKategoriPCB + "R",Modules.namaJKategoriPCB + " : Rollback"),
+
+            new Claim(Modules.kodJGredGaji,Modules.namaJGredGaji),
+            new Claim(Modules.kodJGredGaji + "C",Modules.namaJGredGaji + " : Tambah"),
+            new Claim(Modules.kodJGredGaji + "E",Modules.namaJGredGaji + " : Ubah"),
+            new Claim(Modules.kodJGredGaji + "D",Modules.namaJGredGaji + " : Hapus"),
+            new Claim(Modules.kodJGredGaji + "R",Modules.namaJGredGaji + " : Rollback"),
+
+            new Claim(Modules.kodJTanggaGaji,Modules.namaJGredGaji),
+            new Claim(Modules.kodJTanggaGaji + "C",Modules.namaJGredGaji + " : Tambah"),
+            new Claim(Modules.kodJTanggaGaji + "E",Modules.namaJGredGaji + " : Ubah"),
+            new Claim(Modules.kodJTanggaGaji + "D",Modules.namaJGredGaji + " : Hapus"),
+            new Claim(Modules.kodJTanggaGaji + "R",Modules.namaJGredGaji + " : Rollback"),
             //
 
             // Daftar (DF)

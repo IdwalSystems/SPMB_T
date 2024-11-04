@@ -49,6 +49,12 @@ namespace SPMB_T.__Domain.Entities._Statics
 
         public const string kodJKategoriPCB = "JD0012";
         public const string namaJKategoriPCB = "Jadual Kategori PCB";
+
+        public const string kodJGredGaji = "JD0013";
+        public const string namaJGredGaji = "Jadual Gred Gaji";
+
+        public const string kodJTanggaGaji = "JD0014";
+        public const string namaJTanggaGaji = "Jadual Tangga Gaji";
         //
 
         // Daftar (DF)

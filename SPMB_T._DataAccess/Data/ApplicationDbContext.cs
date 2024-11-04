@@ -44,6 +44,8 @@ namespace SPMB_T._DataAccess.Data
         public DbSet<JKonfigPenyataBaris> JKonfigPenyataBaris { get; set; }
         public DbSet<JKonfigPenyataBarisFormula> JKonfigPenyataBarisFormula { get; set; }
         public DbSet<JKategoriPCB> JKategoriPCB { get; set; }
+        public DbSet<JTanggaGaji> JTanggaGaji { get; set; }
+        public DbSet<JGredGaji> JGredGaji { get; set; }
         //
 
         // 02Daftar

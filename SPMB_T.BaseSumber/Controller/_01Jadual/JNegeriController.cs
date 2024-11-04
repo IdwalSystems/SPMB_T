@@ -1,43 +1,43 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SPMB_T.__Domain.Entities._Statics;
 using SPMB_T.__Domain.Entities.Administrations;
+using SPMB_T.__Domain.Entities.Models._01Jadual;
 using SPMB_T._DataAccess.Data;
 using SPMB_T._DataAccess.Repositories.Interfaces;
-using SPMB_T.__Domain.Entities.Models._01Jadual;
-using Microsoft.EntityFrameworkCore;
 
-namespace SPMB_T.BaseSumber.Controller._01Jadual
+namespace SPMB_T.BaseSumber.Controllers._01Jadual
 {
+    
     [Authorize(Roles = Init.superAdminSupervisorRole)]
-    public class JKategoriPCBController : Microsoft.AspNetCore.Mvc.Controller
+    public class JNegeriController : Microsoft.AspNetCore.Mvc.Controller
     {
-        public const string modul = Modules.kodJKategoriPCB;
-        public const string namamodul = Modules.namaJKategoriPCB;
+        public const string modul = Modules.kodJNegeri;
+        public const string namamodul = Modules.namaJNegeri;
 
-        private readonly _IUnitOfWork _unitOfWork;
         private readonly ApplicationDbContext _context;
+        private readonly _IUnitOfWork _unitOfWork;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly _AppLogIRepository<AppLog, int> _appLog;
 
-        public JKategoriPCBController(
+        public JNegeriController(ApplicationDbContext context,
             _IUnitOfWork unitOfWork,
-            ApplicationDbContext context,
             UserManager<IdentityUser> userManager,
             _AppLogIRepository<AppLog, int> appLog)
         {
-            _unitOfWork = unitOfWork;
             _context = context;
+            _unitOfWork = unitOfWork;
             _userManager = userManager;
             _appLog = appLog;
         }
         public IActionResult Index()
         {
-            return View(_unitOfWork.JKategoriPCB.GetAll());
+            return View(_unitOfWork.JNegeriRepo.GetAll());
         }
 
-        // GET: KW/Details/5
+        // GET: Negeri/Details/5
         [Authorize(Policy = modul)]
         public IActionResult Details(int? id)
         {
@@ -46,44 +46,44 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
                 return NotFound();
             }
 
-            var kategoriPCB = _unitOfWork.JKategoriPCB.GetById((int)id);
-            if (kategoriPCB == null)
+            var negeri = _unitOfWork.JNegeriRepo.GetById((int)id);
+            if (negeri == null)
             {
                 return NotFound();
             }
 
-            return View(kategoriPCB);
+            return View(negeri);
         }
 
-        // GET: KW/Create
+        // GET: Negeri/Create
         [Authorize(Policy = modul + "C")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: KW/Create
+        // POST: Negeri/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = modul + "C")]
-        public async Task<IActionResult> Create(JKategoriPCB kategoriPCB, string syscode)
+        public async Task<IActionResult> Create(JNegeri negeri, string syscode)
         {
-            if (kategoriPCB.Kod != null && KodKategoriPCBExists(kategoriPCB.Kod) == false)
+            if (negeri.Kod != null && KodNegeriExists(negeri.Kod) == false)
             {
                 if (ModelState.IsValid)
                 {
                     var user = await _userManager.GetUserAsync(User);
                     int? pekerjaId = _context.ApplicationUsers.Where(b => b.Id == user!.Id).FirstOrDefault()!.DPekerjaId;
 
-                    kategoriPCB.UserId = user?.UserName ?? "";
+                    negeri.UserId = user?.UserName ?? "";
 
-                    kategoriPCB.TarMasuk = DateTime.Now;
-                    kategoriPCB.DPekerjaMasukId = pekerjaId;
+                    negeri.TarMasuk = DateTime.Now;
+                    negeri.DPekerjaMasukId = pekerjaId;
 
-                    _context.Add(kategoriPCB);
-                    _appLog.Insert("Tambah", kategoriPCB.Kod ?? "", kategoriPCB.Kod ?? "", 0, 0, pekerjaId, modul, syscode, namamodul, user);
+                    _context.Add(negeri);
+                    _appLog.Insert("Tambah", negeri.Kod + " - " + negeri.Perihal, negeri.Kod, 0, 0, pekerjaId, modul, syscode, namamodul, user);
                     await _context.SaveChangesAsync();
                     TempData[SD.Success] = "Data berjaya ditambah..!";
                     return RedirectToAction(nameof(Index));
@@ -95,11 +95,11 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
                 TempData[SD.Error] = "Kod ini telah wujud..!";
             }
 
-            return View(kategoriPCB);
+            return View(negeri);
         }
 
+        // GET: Negeri/Edit/5
         [Authorize(Policy = modul + "E")]
-        // GET: KW/Edit/5
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -107,57 +107,58 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
                 return NotFound();
             }
 
-            var kategoriPCB = _unitOfWork.JKategoriPCB.GetById((int)id);
-            if (kategoriPCB == null)
+            var negeri = _unitOfWork.JNegeriRepo.GetById((int)id);
+            if (negeri == null)
             {
                 return NotFound();
             }
-            return View(kategoriPCB);
+            return View(negeri);
         }
 
-        // POST: KW/Edit/5
+        // POST: Negeri/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = modul + "E")]
-        public async Task<IActionResult> Edit(int id, JKategoriPCB kategoriPCB, string syscode)
+        public async Task<IActionResult> Edit(int id, JNegeri negeri, string syscode)
         {
-            if (id != kategoriPCB.Id)
+            if (id != negeri.Id)
             {
                 return NotFound();
             }
 
-            if (kategoriPCB.Kod != null && ModelState.IsValid)
+            if (negeri.Kod != null && ModelState.IsValid)
             {
                 try
                 {
                     var user = await _userManager.GetUserAsync(User);
                     int? pekerjaId = _context.ApplicationUsers.Where(b => b.Id == user!.Id).FirstOrDefault()!.DPekerjaId;
 
-                    var objAsal = await _context.JKategoriPCB.FirstOrDefaultAsync(x => x.Id == kategoriPCB.Id);
-                    var kodAsal = objAsal?.Kod;
-                    kategoriPCB.UserId = objAsal?.UserId ?? "";
-                    kategoriPCB.TarMasuk = objAsal?.TarMasuk ?? new DateTime();
-                    kategoriPCB.DPekerjaMasukId = objAsal?.DPekerjaMasukId;
+                    var objAsal = await _context.JNegeri.FirstOrDefaultAsync(x => x.Id == negeri.Id);
+                    var kodAsal = objAsal!.Kod;
+                    var perihalAsal = objAsal.Perihal;
+                    negeri.UserId = objAsal.UserId;
+                    negeri.TarMasuk = objAsal.TarMasuk;
+                    negeri.DPekerjaMasukId = objAsal.DPekerjaMasukId;
 
-                    _unitOfWork.JKategoriPCB.Detach(objAsal!);
+                    _context.Entry(objAsal).State = EntityState.Detached;
 
-                    kategoriPCB.UserIdKemaskini = user?.UserName ?? "";
+                    negeri.UserIdKemaskini = user?.UserName ?? "";
 
-                    kategoriPCB.TarKemaskini = DateTime.Now;
-                    kategoriPCB.DPekerjaKemaskiniId = pekerjaId;
+                    negeri.TarKemaskini = DateTime.Now;
+                    negeri.DPekerjaKemaskiniId = pekerjaId;
 
-                    _unitOfWork.JKategoriPCB.Update(kategoriPCB);
+                    _unitOfWork.JNegeriRepo.Update(negeri);
 
-                    _appLog.Insert("Ubah", kodAsal + " -> " + kategoriPCB.Kod + ", ", kategoriPCB.Kod ?? "", id, 0, pekerjaId, modul, syscode, namamodul, user);
+                    _appLog.Insert("Ubah", kodAsal + " -> " + negeri.Kod + ", " + perihalAsal + " -> " + negeri.Perihal + ", ", negeri.Kod, id, 0, pekerjaId, modul, syscode, namamodul, user);
 
                     await _context.SaveChangesAsync();
                     TempData[SD.Success] = "Data berjaya diubah..!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KategoriPCBExists(kategoriPCB.Id))
+                    if (!NegeriExists(negeri.Id))
                     {
                         return NotFound();
                     }
@@ -168,10 +169,10 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(kategoriPCB);
+            return View(negeri);
         }
 
-        // GET: KW/Delete/5
+        // GET: Negeri/Delete/5
         [Authorize(Policy = modul + "D")]
         public IActionResult Delete(int? id)
         {
@@ -180,34 +181,34 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
                 return NotFound();
             }
 
-            var kategoriPCB = _unitOfWork.JKategoriPCB.GetById((int)id);
-            if (kategoriPCB == null)
+            var negeri = _unitOfWork.JNegeriRepo.GetById((int)id);
+            if (negeri == null)
             {
                 return NotFound();
             }
 
-            return View(kategoriPCB);
+            return View(negeri);
         }
 
-        // POST: KW/Delete/5
+        // POST: Negeri/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = modul + "D")]
         public async Task<IActionResult> DeleteConfirmed(int id, string syscode)
         {
-            var kategoriPCB = _unitOfWork.JKategoriPCB.GetById((int)id);
+            var negeri = _unitOfWork.JNegeriRepo.GetById((int)id);
 
             var user = await _userManager.GetUserAsync(User);
             int? pekerjaId = _context.ApplicationUsers.Where(b => b.Id == user!.Id).FirstOrDefault()!.DPekerjaId;
 
-            if (kategoriPCB != null && kategoriPCB.Kod != null)
+            if (negeri != null && negeri.Kod != null)
             {
-                kategoriPCB.UserIdKemaskini = user?.UserName ?? "";
-                kategoriPCB.TarKemaskini = DateTime.Now;
-                kategoriPCB.DPekerjaKemaskiniId = pekerjaId;
+                negeri.UserIdKemaskini = user?.UserName ?? "";
+                negeri.TarKemaskini = DateTime.Now;
+                negeri.DPekerjaKemaskiniId = pekerjaId;
 
-                _context.JKategoriPCB.Remove(kategoriPCB);
-                _appLog.Insert("Hapus", kategoriPCB.Kod ?? "", kategoriPCB.Kod ?? "", id, 0, pekerjaId, modul, syscode, namamodul, user);
+                _context.JNegeri.Remove(negeri);
+                _appLog.Insert("Hapus", negeri.Kod + " - " + negeri.Perihal, negeri.Kod, id, 0, pekerjaId, modul, syscode, namamodul, user);
                 await _context.SaveChangesAsync();
                 TempData[SD.Success] = "Data berjaya dihapuskan..!";
             }
@@ -221,7 +222,7 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
             var user = await _userManager.GetUserAsync(User);
             int? pekerjaId = _context.ApplicationUsers.Where(b => b.Id == user!.Id).FirstOrDefault()!.DPekerjaId;
 
-            var obj = await _context.JKategoriPCB.IgnoreQueryFilters()
+            var obj = await _context.JNegeri.IgnoreQueryFilters()
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             // Batal operation
@@ -233,10 +234,10 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
                 obj.TarKemaskini = DateTime.Now;
                 obj.DPekerjaKemaskiniId = pekerjaId;
 
-                _context.JKategoriPCB.Update(obj);
+                _context.JNegeri.Update(obj);
 
                 // Batal operation end
-                _appLog.Insert("Rollback", obj.Kod ?? "", obj.Kod ?? "", id, 0, pekerjaId, modul, syscode, namamodul, user);
+                _appLog.Insert("Rollback", obj.Kod + " - " + obj.Perihal, obj.Kod ?? "", id, 0, pekerjaId, modul, syscode, namamodul, user);
 
                 await _context.SaveChangesAsync();
                 TempData[SD.Success] = "Data berjaya dikembalikan..!";
@@ -244,14 +245,14 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
 
             return RedirectToAction(nameof(Index));
         }
-        private bool KategoriPCBExists(int id)
+        private bool NegeriExists(int id)
         {
-            return _unitOfWork.JKategoriPCB.IsExist(b => b.Id == id);
+            return _unitOfWork.JNegeriRepo.IsExist(b => b.Id == id);
         }
 
-        private bool KodKategoriPCBExists(string kod)
+        private bool KodNegeriExists(string kod)
         {
-            return _unitOfWork.JKategoriPCB.IsExist(e => e.Kod == kod);
+            return _unitOfWork.JNegeriRepo.IsExist(e => e.Kod == kod);
         }
     }
 }

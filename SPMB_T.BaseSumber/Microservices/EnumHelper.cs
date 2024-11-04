@@ -2,7 +2,7 @@
 using SPMB_T._DataAccess.Services;
 using SPMB_T.BaseSumber.Models.ViewModels.Common;
 
-namespace SPMB_T.Akaun.Microservices
+namespace SPMB_T.BaseSumber.Microservices
 {
     public static class EnumHelper<T> where T : struct, Enum
     {

@@ -55,7 +55,9 @@ namespace SPMB_T._DataAccess.Repositories.Interfaces
         IAkTerimaTunggalRepository AkTerimaTunggalRepo { get; }
         IAkPenyataPemungutRepository AkPenyataPemungutRepo { get; }
         IAkPenyesuaianPenyataBankRepository AkPenyesuaianBankRepo { get; }
-        IJKategoriPCB JKategoriPCBRepo { get; }
+        IJKategoriPCB JKategoriPCB { get; }
+        IJGredGaji JGredGaji { get; }
+        IJTanggaGaji JTanggaGaji { get; }
         Task<int> Save();
     }
 }

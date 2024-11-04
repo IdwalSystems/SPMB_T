@@ -6,6 +6,8 @@
     @Html.ActiveClass("JNegeri")
     @Html.ActiveClass("JCawangan")
     @Html.ActiveClass("JKategoriPCB")
+    @Html.ActiveClass("JGredGaji")
+    @Html.ActiveClass("JTanggaGaji")
     " href="#submenuJadual" data-toggle="collapse" data-target="#submenuJadual"><img src="~/img/svg/jadual.svg" class="fa fa-pull-left fa-0 icon-bar"><span>&nbsp; Jadual</span></a>
     <div class="collapse" id="submenuJadual" aria-expanded="false">
         <ul class="flex-column ps-2 nav">
@@ -14,17 +16,29 @@
                 <a class="nav-link border-bottom text-truncate collapsed py-1 ms-3
                 @Html.ActiveClass("JBahagian")
                 @Html.ActiveClass("JKategoriPCB")
+                @Html.ActiveClass("JGredGaji")
+                @Html.ActiveClass("JTanggaGaji")
                    " href="#submenuJadualsub1" data-toggle="collapse" data-target="#submenuJadualsub1"><span>Pengurusan</span></a>
                 <div class="collapse" id="submenuJadualsub1" aria-expanded="false">
                     <ul class="flex-column nav ps-4">
                         <li class="nav-item">
-                            <a class="nav-link p-1 text-truncate ps-4 @Html.ActiveSideBarClass("JBahagian")" asp-area="" asp-controller="JBahagian" asp-action="Index">
+                            <a class="nav-link p-1 text-truncate ps-4 border-bottom @Html.ActiveSideBarClass("JBahagian")" asp-area="" asp-controller="JBahagian" asp-action="Index">
                                 Bahagian
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-1 text-truncate ps-4 @Html.ActiveSideBarClass("JKagetoriPCB")" asp-area="" asp-controller="JKategoriPCB" asp-action="Index">
+                            <a class="nav-link p-1 text-truncate ps-4 border-bottom @Html.ActiveSideBarClass("JKategoriPCB")" asp-area="" asp-controller="JKategoriPCB" asp-action="Index">
                                 Kategori PCB
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-1 text-truncate ps-4 border-bottom @Html.ActiveSideBarClass("JGredGaji")" asp-area="" asp-controller="JGredGaji" asp-action="Index">
+                                Gred Gaji
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-1 text-truncate ps-4 border-bottom @Html.ActiveSideBarClass("JTanggaGaji")" asp-area="" asp-controller="JTanggaGaji" asp-action="Index">
+                                Tangga Gaji
                             </a>
                         </li>
                     </ul>

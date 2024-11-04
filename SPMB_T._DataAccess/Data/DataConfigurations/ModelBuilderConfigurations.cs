@@ -29,6 +29,8 @@ namespace SPMB_T._DataAccess.Data.DataConfigurations
             modelBuilder.Entity<JElaunPotongan>().HasQueryFilter(m => EF.Property<int>(m, "FlHapus") == 0);
             modelBuilder.Entity<JKonfigPerubahanEkuiti>().HasQueryFilter(m => EF.Property<int>(m, "FlHapus") == 0);
             modelBuilder.Entity<JKonfigPenyata>().HasQueryFilter(m => EF.Property<int>(m, "FlHapus") == 0);
+            modelBuilder.Entity<JTanggaGaji>().HasQueryFilter(m => EF.Property<int>(m, "FlHapus") == 0);
+            modelBuilder.Entity<JGredGaji>().HasQueryFilter(m => EF.Property<int>(m, "FlHapus") == 0);
 
             //
 

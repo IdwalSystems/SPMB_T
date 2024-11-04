@@ -1,7 +1,7 @@
-﻿@model JBangsa
+﻿@model JGredGaji
 
 @{
-    ViewData["Title"] = "Bangsa - Ubah";
+    ViewData["Title"] = "Gred Gaji - Ubah";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="card box-shadow">
@@ -23,9 +23,18 @@
             <input type="hidden" asp-for="Id" />
             <input name="syscode" value="SPSU" hidden />
             <div class="form-group">
-                <label asp-for="Perihal" class="control-label"></label>
-                <input asp-for="Perihal" class="form-control form-control-sm text-uppercase" onkeydown="return /[a-zA-Z]/i.test(event.key)" />
-                <span asp-validation-for="Perihal" class="text-danger"></span>
+                <label asp-for="Kod" class="control-label"></label>
+                <input asp-for="Kod" class="form-control form-control-sm text-uppercase" readonly/>
+                <span asp-validation-for="Kod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnKlasifikasiPerkhidmatan" class="form-label"></label>
+                <select asp-for="EnKlasifikasiPerkhidmatan" class="form-select form-control form-control-sm select2">
+                    @foreach (var item in ViewBag.EnKlasifikasiPerkhidmatan)
+                    {
+                        <option value="@item.id">@item.perihal</option>
+                    }
+                </select>
             </div>
             <hr />
             <div class="form-group">

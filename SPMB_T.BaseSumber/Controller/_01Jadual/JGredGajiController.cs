@@ -1,43 +1,40 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using SPMB_T.__Domain.Entities._Enums;
 using SPMB_T.__Domain.Entities._Statics;
 using SPMB_T.__Domain.Entities.Administrations;
+using SPMB_T.__Domain.Entities.Models._01Jadual;
 using SPMB_T._DataAccess.Data;
 using SPMB_T._DataAccess.Repositories.Interfaces;
-using SPMB_T.__Domain.Entities.Models._01Jadual;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SPMB_T.BaseSumber.Microservices;
 
 namespace SPMB_T.BaseSumber.Controller._01Jadual
 {
     [Authorize(Roles = Init.superAdminSupervisorRole)]
-    public class JKategoriPCBController : Microsoft.AspNetCore.Mvc.Controller
+    public class JGredGajiController : Microsoft.AspNetCore.Mvc.Controller
     {
-        public const string modul = Modules.kodJKategoriPCB;
-        public const string namamodul = Modules.namaJKategoriPCB;
+        public const string modul = Modules.kodJGredGaji;
+        public const string namamodul = Modules.namaJGredGaji;
 
-        private readonly _IUnitOfWork _unitOfWork;
         private readonly ApplicationDbContext _context;
+        private readonly _IUnitOfWork _unitOfWork;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly _AppLogIRepository<AppLog, int> _appLog;
 
-        public JKategoriPCBController(
+        public JGredGajiController(ApplicationDbContext context,
             _IUnitOfWork unitOfWork,
-            ApplicationDbContext context,
             UserManager<IdentityUser> userManager,
             _AppLogIRepository<AppLog, int> appLog)
         {
-            _unitOfWork = unitOfWork;
             _context = context;
+            _unitOfWork = unitOfWork;
             _userManager = userManager;
             _appLog = appLog;
         }
-        public IActionResult Index()
-        {
-            return View(_unitOfWork.JKategoriPCB.GetAll());
-        }
 
-        // GET: KW/Details/5
+        // Papar
         [Authorize(Policy = modul)]
         public IActionResult Details(int? id)
         {
@@ -46,44 +43,51 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
                 return NotFound();
             }
 
-            var kategoriPCB = _unitOfWork.JKategoriPCB.GetById((int)id);
-            if (kategoriPCB == null)
+            // SELECT * FROM [JGREDGAJI] WHERE ID = [id] 
+            var gredGaji = _unitOfWork.JGredGaji.GetById((int)id);
+            if (gredGaji == null)
             {
                 return NotFound();
             }
 
-            return View(kategoriPCB);
+            return View(gredGaji);
         }
 
-        // GET: KW/Create
+        // fungsi main
+        public IActionResult Index()
+        {
+            return View(_unitOfWork.JGredGaji.GetAll());
+        }
+
+        // fungsi tambah
         [Authorize(Policy = modul + "C")]
         public IActionResult Create()
         {
+            var klasifikasiPerkhidmatan = EnumHelper<EnKlasifikasiPerkhidmatan>.GetList();
+            ViewBag.EnKlasifikasiPerkhidmatan = klasifikasiPerkhidmatan;
+
             return View();
         }
 
-        // POST: KW/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = modul + "C")]
-        public async Task<IActionResult> Create(JKategoriPCB kategoriPCB, string syscode)
+        public async Task<IActionResult> Create(JGredGaji gredGaji, string syscode)
         {
-            if (kategoriPCB.Kod != null && KodKategoriPCBExists(kategoriPCB.Kod) == false)
+            if (gredGaji.Kod != null && KodGredGajiExists(gredGaji.Kod) == false)
             {
                 if (ModelState.IsValid)
                 {
                     var user = await _userManager.GetUserAsync(User);
                     int? pekerjaId = _context.ApplicationUsers.Where(b => b.Id == user!.Id).FirstOrDefault()!.DPekerjaId;
 
-                    kategoriPCB.UserId = user?.UserName ?? "";
+                    gredGaji.UserId = user?.UserName ?? "";
 
-                    kategoriPCB.TarMasuk = DateTime.Now;
-                    kategoriPCB.DPekerjaMasukId = pekerjaId;
+                    gredGaji.TarMasuk = DateTime.Now;
+                    gredGaji.DPekerjaMasukId = pekerjaId;
 
-                    _context.Add(kategoriPCB);
-                    _appLog.Insert("Tambah", kategoriPCB.Kod ?? "", kategoriPCB.Kod ?? "", 0, 0, pekerjaId, modul, syscode, namamodul, user);
+                    _context.Add(gredGaji);
+                    _appLog.Insert("Tambah", gredGaji.Kod ?? "", gredGaji.Kod ?? "", 0, 0, pekerjaId, modul, syscode, namamodul, user);
                     await _context.SaveChangesAsync();
                     TempData[SD.Success] = "Data berjaya ditambah..!";
                     return RedirectToAction(nameof(Index));
@@ -94,12 +98,14 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
             {
                 TempData[SD.Error] = "Kod ini telah wujud..!";
             }
+            var klasifikasiPerkhidmatan = EnumHelper<EnKlasifikasiPerkhidmatan>.GetList();
+            ViewBag.EnKlasifikasiPerkhidmatan = klasifikasiPerkhidmatan;
 
-            return View(kategoriPCB);
+            return View(gredGaji);
         }
 
         [Authorize(Policy = modul + "E")]
-        // GET: KW/Edit/5
+        // fungsi ubah
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -107,57 +113,58 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
                 return NotFound();
             }
 
-            var kategoriPCB = _unitOfWork.JKategoriPCB.GetById((int)id);
-            if (kategoriPCB == null)
+            var gredGaji = _unitOfWork.JGredGaji.GetById((int)id);
+            if (gredGaji == null)
             {
                 return NotFound();
             }
-            return View(kategoriPCB);
+            var klasifikasiPerkhidmatan = EnumHelper<EnKlasifikasiPerkhidmatan>.GetList();
+            ViewBag.EnKlasifikasiPerkhidmatan = klasifikasiPerkhidmatan;
+
+            return View(gredGaji);
         }
 
-        // POST: KW/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = modul + "E")]
-        public async Task<IActionResult> Edit(int id, JKategoriPCB kategoriPCB, string syscode)
+        // fungsi submit ubah
+        public async Task<IActionResult> Edit(int id, JGredGaji gredGaji, string syscode)
         {
-            if (id != kategoriPCB.Id)
+            if (id != gredGaji.Id)
             {
                 return NotFound();
             }
 
-            if (kategoriPCB.Kod != null && ModelState.IsValid)
+            if (gredGaji.Kod != null && ModelState.IsValid)
             {
                 try
                 {
                     var user = await _userManager.GetUserAsync(User);
                     int? pekerjaId = _context.ApplicationUsers.Where(b => b.Id == user!.Id).FirstOrDefault()!.DPekerjaId;
 
-                    var objAsal = await _context.JKategoriPCB.FirstOrDefaultAsync(x => x.Id == kategoriPCB.Id);
+                    var objAsal = await _context.JGredGaji.FirstOrDefaultAsync(x => x.Id == gredGaji.Id);
                     var kodAsal = objAsal?.Kod;
-                    kategoriPCB.UserId = objAsal?.UserId ?? "";
-                    kategoriPCB.TarMasuk = objAsal?.TarMasuk ?? new DateTime();
-                    kategoriPCB.DPekerjaMasukId = objAsal?.DPekerjaMasukId;
+                    gredGaji.UserId = objAsal?.UserId ?? "";
+                    gredGaji.TarMasuk = objAsal?.TarMasuk ?? new DateTime();
+                    gredGaji.DPekerjaMasukId = objAsal?.DPekerjaMasukId;
 
-                    _unitOfWork.JKategoriPCB.Detach(objAsal!);
+                    _unitOfWork.JGredGaji.Detach(objAsal!);
 
-                    kategoriPCB.UserIdKemaskini = user?.UserName ?? "";
+                    gredGaji.UserIdKemaskini = user?.UserName ?? "";
 
-                    kategoriPCB.TarKemaskini = DateTime.Now;
-                    kategoriPCB.DPekerjaKemaskiniId = pekerjaId;
+                    gredGaji.TarKemaskini = DateTime.Now;
+                    gredGaji.DPekerjaKemaskiniId = pekerjaId;
 
-                    _unitOfWork.JKategoriPCB.Update(kategoriPCB);
+                    _unitOfWork.JGredGaji.Update(gredGaji);
 
-                    _appLog.Insert("Ubah", kodAsal + " -> " + kategoriPCB.Kod + ", ", kategoriPCB.Kod ?? "", id, 0, pekerjaId, modul, syscode, namamodul, user);
+                    _appLog.Insert("Ubah", kodAsal + " -> " + gredGaji.Kod + ", ", gredGaji.Kod ?? "", id, 0, pekerjaId, modul, syscode, namamodul, user);
 
                     await _context.SaveChangesAsync();
                     TempData[SD.Success] = "Data berjaya diubah..!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KategoriPCBExists(kategoriPCB.Id))
+                    if (!GredGajiExists(gredGaji.Id))
                     {
                         return NotFound();
                     }
@@ -168,11 +175,14 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(kategoriPCB);
+            var klasifikasiPerkhidmatan = EnumHelper<EnKlasifikasiPerkhidmatan>.GetList();
+            ViewBag.EnKlasifikasiPerkhidmatan = klasifikasiPerkhidmatan;
+
+            return View(gredGaji);
         }
 
-        // GET: KW/Delete/5
         [Authorize(Policy = modul + "D")]
+        // fungsi hapus
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -180,34 +190,34 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
                 return NotFound();
             }
 
-            var kategoriPCB = _unitOfWork.JKategoriPCB.GetById((int)id);
-            if (kategoriPCB == null)
+            var bangsa = _unitOfWork.JGredGaji.GetById((int)id);
+            if (bangsa == null)
             {
                 return NotFound();
             }
 
-            return View(kategoriPCB);
+            return View(bangsa);
         }
 
-        // POST: KW/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = modul + "D")]
+        // fungsi submit hapus
         public async Task<IActionResult> DeleteConfirmed(int id, string syscode)
         {
-            var kategoriPCB = _unitOfWork.JKategoriPCB.GetById((int)id);
+            var gredGaji = _unitOfWork.JGredGaji.GetById((int)id);
 
             var user = await _userManager.GetUserAsync(User);
             int? pekerjaId = _context.ApplicationUsers.Where(b => b.Id == user!.Id).FirstOrDefault()!.DPekerjaId;
 
-            if (kategoriPCB != null && kategoriPCB.Kod != null)
+            if (gredGaji != null && gredGaji.Kod != null)
             {
-                kategoriPCB.UserIdKemaskini = user?.UserName ?? "";
-                kategoriPCB.TarKemaskini = DateTime.Now;
-                kategoriPCB.DPekerjaKemaskiniId = pekerjaId;
+                gredGaji.UserIdKemaskini = user?.UserName ?? "";
+                gredGaji.TarKemaskini = DateTime.Now;
+                gredGaji.DPekerjaKemaskiniId = pekerjaId;
 
-                _context.JKategoriPCB.Remove(kategoriPCB);
-                _appLog.Insert("Hapus", kategoriPCB.Kod ?? "", kategoriPCB.Kod ?? "", id, 0, pekerjaId, modul, syscode, namamodul, user);
+                _context.JGredGaji.Remove(gredGaji);
+                _appLog.Insert("Hapus", gredGaji.Kod ?? "", gredGaji.Kod ?? "", id, 0, pekerjaId, modul, syscode, namamodul, user);
                 await _context.SaveChangesAsync();
                 TempData[SD.Success] = "Data berjaya dihapuskan..!";
             }
@@ -216,12 +226,13 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
         }
 
         [Authorize(Policy = modul + "R")]
+        //fungsi rollback
         public async Task<IActionResult> RollBack(int id, string syscode)
         {
             var user = await _userManager.GetUserAsync(User);
             int? pekerjaId = _context.ApplicationUsers.Where(b => b.Id == user!.Id).FirstOrDefault()!.DPekerjaId;
 
-            var obj = await _context.JKategoriPCB.IgnoreQueryFilters()
+            var obj = await _context.JGredGaji.IgnoreQueryFilters()
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             // Batal operation
@@ -233,7 +244,7 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
                 obj.TarKemaskini = DateTime.Now;
                 obj.DPekerjaKemaskiniId = pekerjaId;
 
-                _context.JKategoriPCB.Update(obj);
+                _context.JGredGaji.Update(obj);
 
                 // Batal operation end
                 _appLog.Insert("Rollback", obj.Kod ?? "", obj.Kod ?? "", id, 0, pekerjaId, modul, syscode, namamodul, user);
@@ -244,14 +255,17 @@ namespace SPMB_T.BaseSumber.Controller._01Jadual
 
             return RedirectToAction(nameof(Index));
         }
-        private bool KategoriPCBExists(int id)
+
+        private bool GredGajiExists(int id)
         {
-            return _unitOfWork.JKategoriPCB.IsExist(b => b.Id == id);
+            return _unitOfWork.JGredGaji.IsExist(b => b.Id == id);
         }
 
-        private bool KodKategoriPCBExists(string kod)
+        private bool KodGredGajiExists(string kod)
         {
-            return _unitOfWork.JKategoriPCB.IsExist(e => e.Kod == kod);
+            // SELECT COUNT(Kod) FROM JGREDGAJI WHERE KOD = kod
+            // HAVING COUNT(KOD) > 0
+            return _unitOfWork.JGredGaji.IsExist(e => e.Kod == kod);
         }
     }
 }

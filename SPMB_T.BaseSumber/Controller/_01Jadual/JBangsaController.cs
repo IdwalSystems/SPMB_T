@@ -9,7 +9,7 @@ using SPMB_T._DataAccess.Data;
 using SPMB_T._DataAccess.Repositories.Implementations;
 using SPMB_T._DataAccess.Repositories.Interfaces;
 
-namespace SPMB_T.Akaun.Controllers._01Jadual
+namespace SPMB_T.BaseSumber.Controllers._01Jadual
 {
     [Authorize(Roles = Init.superAdminSupervisorRole)]
     public class JBangsaController : Microsoft.AspNetCore.Mvc.Controller

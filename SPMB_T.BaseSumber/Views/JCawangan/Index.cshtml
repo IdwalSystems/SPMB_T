@@ -1,7 +1,7 @@
-﻿@model IEnumerable<JBangsa>
+﻿@model IEnumerable<JCawangan>
 
 @{
-    ViewData["Title"] = "Bangsa";
+    ViewData["Title"] = "Cawangan";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <partial name="_JSIndex" />
@@ -23,8 +23,14 @@
                     <thead class="table-secondary">
                         <tr>
                             <th width="5%">Bil</th>
+                            <th class="kod" width="5%">
+                                @Html.DisplayNameFor(model => model.Kod)
+                            </th>
                             <th class="perihal">
                                 @Html.DisplayNameFor(model => model.Perihal)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AkBankId)
                             </th>
                             <th width="5%"></th>
                         </tr>
@@ -36,7 +42,13 @@
                             <tr class="@tabletype text-uppercase">
                                 <td></td>
                                 <td>
+                                    @item.Kod
+                                </td>
+                                <td>
                                     @item.Perihal
+                                </td>
+                                <td>
+                                    @item.AkBank?.Perihal
                                 </td>
                                 <td width="5%" class="text-center">
                                     <div class="btn-group" role="group" aria-label="action">
