@@ -94,11 +94,11 @@ namespace SPMB_T.__Domain.Entities._Statics
             new Claim(Modules.kodJGredGaji + "D",Modules.namaJGredGaji + " : Hapus"),
             new Claim(Modules.kodJGredGaji + "R",Modules.namaJGredGaji + " : Rollback"),
 
-            new Claim(Modules.kodJTanggaGaji,Modules.namaJGredGaji),
-            new Claim(Modules.kodJTanggaGaji + "C",Modules.namaJGredGaji + " : Tambah"),
-            new Claim(Modules.kodJTanggaGaji + "E",Modules.namaJGredGaji + " : Ubah"),
-            new Claim(Modules.kodJTanggaGaji + "D",Modules.namaJGredGaji + " : Hapus"),
-            new Claim(Modules.kodJTanggaGaji + "R",Modules.namaJGredGaji + " : Rollback"),
+            new Claim(Modules.kodJTanggaGaji,Modules.namaJTanggaGaji),
+            new Claim(Modules.kodJTanggaGaji + "C",Modules.namaJTanggaGaji + " : Tambah"),
+            new Claim(Modules.kodJTanggaGaji + "E",Modules.namaJTanggaGaji + " : Ubah"),
+            new Claim(Modules.kodJTanggaGaji + "D",Modules.namaJTanggaGaji + " : Hapus"),
+            new Claim(Modules.kodJTanggaGaji + "R",Modules.namaJTanggaGaji + " : Rollback"),
             //
 
             // Daftar (DF)
