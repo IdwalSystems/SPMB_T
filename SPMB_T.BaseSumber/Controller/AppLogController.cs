@@ -12,7 +12,7 @@ using SPMB_T.BaseSumber.Infrastructure;
 using SPMB_T.BaseSumber.Models.ViewModels.Prints;
 using System.Data;
 
-namespace SPMBNET7.App.Controller
+namespace SPMB_T.BaseSumber.Controller
 {
     [Authorize(Roles = Init.superAdminAdminRole)]
     public class AppLogController : Microsoft.AspNetCore.Mvc.Controller
