@@ -10,5 +10,6 @@ namespace SPMB_T.__Domain.Entities.Models._01Jadual
         public string? KodSSPA { get; set; }
         [DisplayName("Kod SSM")]
         public string? KodSSM { get; set; }
+        public ICollection<JGredTanggaGaji>? JGredTanggaGaji { get; set; }
     }
 }

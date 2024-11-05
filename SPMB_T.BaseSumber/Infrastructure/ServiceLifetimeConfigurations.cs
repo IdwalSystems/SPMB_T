@@ -83,6 +83,30 @@ namespace SPMB_T.BaseSumber.Infrastructure
                 opt.AddPolicy(Modules.kodJKategoriPCB + "E", policy => policy.RequireClaim(Modules.kodJKategoriPCB + "E"));
                 opt.AddPolicy(Modules.kodJKategoriPCB + "D", policy => policy.RequireClaim(Modules.kodJKategoriPCB + "D"));
                 opt.AddPolicy(Modules.kodJKategoriPCB + "R", policy => policy.RequireClaim(Modules.kodJKategoriPCB + "R"));
+
+                opt.AddPolicy(Modules.kodJGredGaji, policy => policy.RequireClaim(Modules.kodJGredGaji));
+                opt.AddPolicy(Modules.kodJGredGaji + "C", policy => policy.RequireClaim(Modules.kodJGredGaji + "C"));
+                opt.AddPolicy(Modules.kodJGredGaji + "E", policy => policy.RequireClaim(Modules.kodJGredGaji + "E"));
+                opt.AddPolicy(Modules.kodJGredGaji + "D", policy => policy.RequireClaim(Modules.kodJGredGaji + "D"));
+                opt.AddPolicy(Modules.kodJGredGaji + "R", policy => policy.RequireClaim(Modules.kodJGredGaji + "R"));
+
+                opt.AddPolicy(Modules.kodJTanggaGaji, policy => policy.RequireClaim(Modules.kodJTanggaGaji));
+                opt.AddPolicy(Modules.kodJTanggaGaji + "C", policy => policy.RequireClaim(Modules.kodJTanggaGaji + "C"));
+                opt.AddPolicy(Modules.kodJTanggaGaji + "E", policy => policy.RequireClaim(Modules.kodJTanggaGaji + "E"));
+                opt.AddPolicy(Modules.kodJTanggaGaji + "D", policy => policy.RequireClaim(Modules.kodJTanggaGaji + "D"));
+                opt.AddPolicy(Modules.kodJTanggaGaji + "R", policy => policy.RequireClaim(Modules.kodJTanggaGaji + "R"));
+
+                opt.AddPolicy(Modules.kodJElaunPotongan, policy => policy.RequireClaim(Modules.kodJElaunPotongan));
+                opt.AddPolicy(Modules.kodJElaunPotongan + "C", policy => policy.RequireClaim(Modules.kodJElaunPotongan + "C"));
+                opt.AddPolicy(Modules.kodJElaunPotongan + "E", policy => policy.RequireClaim(Modules.kodJElaunPotongan + "E"));
+                opt.AddPolicy(Modules.kodJElaunPotongan + "D", policy => policy.RequireClaim(Modules.kodJElaunPotongan + "D"));
+                opt.AddPolicy(Modules.kodJElaunPotongan + "R", policy => policy.RequireClaim(Modules.kodJElaunPotongan + "R"));
+
+                opt.AddPolicy(Modules.kodJGredTanggaGaji, policy => policy.RequireClaim(Modules.kodJGredTanggaGaji));
+                opt.AddPolicy(Modules.kodJGredTanggaGaji + "C", policy => policy.RequireClaim(Modules.kodJGredTanggaGaji + "C"));
+                opt.AddPolicy(Modules.kodJGredTanggaGaji + "E", policy => policy.RequireClaim(Modules.kodJGredTanggaGaji + "E"));
+                opt.AddPolicy(Modules.kodJGredTanggaGaji + "D", policy => policy.RequireClaim(Modules.kodJGredTanggaGaji + "D"));
+                opt.AddPolicy(Modules.kodJGredTanggaGaji + "R", policy => policy.RequireClaim(Modules.kodJGredTanggaGaji + "R"));
                 //
 
                 // Daftar (DF)

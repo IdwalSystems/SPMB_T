@@ -226,11 +226,46 @@ namespace SPMB_T._DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Kod = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Perihal = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Perihal = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsGajiPokok = table.Column<bool>(type: "bit", nullable: false),
+                    IsKWSP = table.Column<bool>(type: "bit", nullable: false),
+                    IsSOCSO = table.Column<bool>(type: "bit", nullable: false),
+                    DPekerjaMasukId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TarMasuk = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DPekerjaKemaskiniId = table.Column<int>(type: "int", nullable: true),
+                    UserIdKemaskini = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TarKemaskini = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FlHapus = table.Column<int>(type: "int", nullable: false),
+                    TarHapus = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    SebabHapus = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_JElaunPotongan", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JGredGaji",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Kod = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EnKlasifikasiPerkhidmatan = table.Column<int>(type: "int", nullable: false),
+                    DPekerjaMasukId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TarMasuk = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DPekerjaKemaskiniId = table.Column<int>(type: "int", nullable: true),
+                    UserIdKemaskini = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TarKemaskini = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FlHapus = table.Column<int>(type: "int", nullable: false),
+                    TarHapus = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    SebabHapus = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JGredGaji", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -347,6 +382,29 @@ namespace SPMB_T._DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_JPTJ", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JTanggaGaji",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    KodSSPA = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    KodSSM = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DPekerjaMasukId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TarMasuk = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DPekerjaKemaskiniId = table.Column<int>(type: "int", nullable: true),
+                    UserIdKemaskini = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TarKemaskini = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FlHapus = table.Column<int>(type: "int", nullable: false),
+                    TarHapus = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    SebabHapus = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JTanggaGaji", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -768,6 +826,42 @@ namespace SPMB_T._DataAccess.Migrations
                         principalTable: "JPTJ",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JGredTanggaGaji",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    JTanggaGajiId = table.Column<int>(type: "int", nullable: false),
+                    JGredGajiId = table.Column<int>(type: "int", nullable: false),
+                    EnSijilKelayakan = table.Column<int>(type: "int", nullable: false),
+                    DPekerjaMasukId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TarMasuk = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DPekerjaKemaskiniId = table.Column<int>(type: "int", nullable: true),
+                    UserIdKemaskini = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TarKemaskini = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FlHapus = table.Column<int>(type: "int", nullable: false),
+                    TarHapus = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    SebabHapus = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JGredTanggaGaji", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_JGredTanggaGaji_JGredGaji_JGredGajiId",
+                        column: x => x.JGredGajiId,
+                        principalTable: "JGredGaji",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JGredTanggaGaji_JTanggaGaji_JTanggaGajiId",
+                        column: x => x.JTanggaGajiId,
+                        principalTable: "JTanggaGaji",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -6601,6 +6695,16 @@ namespace SPMB_T._DataAccess.Migrations
                 column: "AkBankId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_JGredTanggaGaji_JGredGajiId",
+                table: "JGredTanggaGaji",
+                column: "JGredGajiId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JGredTanggaGaji_JTanggaGajiId",
+                table: "JGredTanggaGaji",
+                column: "JTanggaGajiId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_JKonfigPenyataBaris_JKonfigPenyataId",
                 table: "JKonfigPenyataBaris",
                 column: "JKonfigPenyataId");
@@ -6835,6 +6939,9 @@ namespace SPMB_T._DataAccess.Migrations
                 name: "JAgama");
 
             migrationBuilder.DropTable(
+                name: "JGredTanggaGaji");
+
+            migrationBuilder.DropTable(
                 name: "JKategoriPCB");
 
             migrationBuilder.DropTable(
@@ -6911,6 +7018,12 @@ namespace SPMB_T._DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "JGredGaji");
+
+            migrationBuilder.DropTable(
+                name: "JTanggaGaji");
 
             migrationBuilder.DropTable(
                 name: "JKonfigPenyataBaris");

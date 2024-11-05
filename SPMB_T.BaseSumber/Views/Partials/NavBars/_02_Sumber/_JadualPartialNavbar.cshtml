@@ -8,6 +8,7 @@
     @Html.ActiveClass("JKategoriPCB")
     @Html.ActiveClass("JGredGaji")
     @Html.ActiveClass("JTanggaGaji")
+    @Html.ActiveClass("JGredTanggaGaji")
     " href="#submenuJadual" data-toggle="collapse" data-target="#submenuJadual"><img src="~/img/svg/jadual.svg" class="fa fa-pull-left fa-0 icon-bar"><span>&nbsp; Jadual</span></a>
     <div class="collapse" id="submenuJadual" aria-expanded="false">
         <ul class="flex-column ps-2 nav">
@@ -18,6 +19,7 @@
                 @Html.ActiveClass("JKategoriPCB")
                 @Html.ActiveClass("JGredGaji")
                 @Html.ActiveClass("JTanggaGaji")
+                @Html.ActiveClass("JGredTanggaGaji")
                    " href="#submenuJadualsub1" data-toggle="collapse" data-target="#submenuJadualsub1"><span>Pengurusan</span></a>
                 <div class="collapse" id="submenuJadualsub1" aria-expanded="false">
                     <ul class="flex-column nav ps-4">
@@ -39,6 +41,11 @@
                         <li class="nav-item">
                             <a class="nav-link p-1 text-truncate ps-4 border-bottom @Html.ActiveSideBarClass("JTanggaGaji")" asp-area="" asp-controller="JTanggaGaji" asp-action="Index">
                                 Tangga Gaji
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-1 text-truncate ps-4 border-bottom @Html.ActiveSideBarClass("JGredTanggaGaji")" asp-area="" asp-controller="JGredTanggaGaji" asp-action="Index">
+                                Gred Dan Tangga Gaji
                             </a>
                         </li>
                     </ul>

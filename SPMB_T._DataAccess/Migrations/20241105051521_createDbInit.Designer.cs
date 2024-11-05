@@ -12,7 +12,7 @@ using SPMB_T._DataAccess.Data;
 namespace SPMB_T._DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241030013148_createDbInit")]
+    [Migration("20241105051521_createDbInit")]
     partial class createDbInit
     {
         /// <inheritdoc />
@@ -768,15 +768,157 @@ namespace SPMB_T._DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("DPekerjaKemaskiniId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DPekerjaMasukId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FlHapus")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsGajiPokok")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsKWSP")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSOCSO")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Kod")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Perihal")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("SebabHapus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("TarHapus")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("TarKemaskini")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TarMasuk")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserIdKemaskini")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("JElaunPotongan");
+                });
+
+            modelBuilder.Entity("SPMB_T.__Domain.Entities.Models._01Jadual.JGredGaji", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("DPekerjaKemaskiniId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DPekerjaMasukId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EnKlasifikasiPerkhidmatan")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FlHapus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Kod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SebabHapus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("TarHapus")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("TarKemaskini")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TarMasuk")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserIdKemaskini")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("JGredGaji");
+                });
+
+            modelBuilder.Entity("SPMB_T.__Domain.Entities.Models._01Jadual.JGredTanggaGaji", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("DPekerjaKemaskiniId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DPekerjaMasukId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EnSijilKelayakan")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FlHapus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JGredGajiId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JTanggaGajiId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SebabHapus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("TarHapus")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("TarKemaskini")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TarMasuk")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserIdKemaskini")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JGredGajiId");
+
+                    b.HasIndex("JTanggaGajiId");
+
+                    b.ToTable("JGredTanggaGaji");
                 });
 
             modelBuilder.Entity("SPMB_T.__Domain.Entities.Models._01Jadual.JKW", b =>
@@ -1226,6 +1368,54 @@ namespace SPMB_T._DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JPTJ");
+                });
+
+            modelBuilder.Entity("SPMB_T.__Domain.Entities.Models._01Jadual.JTanggaGaji", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("DPekerjaKemaskiniId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DPekerjaMasukId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FlHapus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("KodSSM")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KodSSPA")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SebabHapus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("TarHapus")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("TarKemaskini")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TarMasuk")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserIdKemaskini")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("JTanggaGaji");
                 });
 
             modelBuilder.Entity("SPMB_T.__Domain.Entities.Models._02Daftar.DDaftarAwam", b =>
@@ -7410,6 +7600,25 @@ namespace SPMB_T._DataAccess.Migrations
                     b.Navigation("AkBank");
                 });
 
+            modelBuilder.Entity("SPMB_T.__Domain.Entities.Models._01Jadual.JGredTanggaGaji", b =>
+                {
+                    b.HasOne("SPMB_T.__Domain.Entities.Models._01Jadual.JGredGaji", "JGredGaji")
+                        .WithMany("JGredTanggaGaji")
+                        .HasForeignKey("JGredGajiId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SPMB_T.__Domain.Entities.Models._01Jadual.JTanggaGaji", "JTanggaGaji")
+                        .WithMany("JGredTanggaGaji")
+                        .HasForeignKey("JTanggaGajiId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("JGredGaji");
+
+                    b.Navigation("JTanggaGaji");
+                });
+
             modelBuilder.Entity("SPMB_T.__Domain.Entities.Models._01Jadual.JKWPTJBahagian", b =>
                 {
                     b.HasOne("SPMB_T.__Domain.Entities.Models._01Jadual.JBahagian", "JBahagian")
@@ -9965,6 +10174,11 @@ namespace SPMB_T._DataAccess.Migrations
                     b.Navigation("SuGajiElaunPotongan");
                 });
 
+            modelBuilder.Entity("SPMB_T.__Domain.Entities.Models._01Jadual.JGredGaji", b =>
+                {
+                    b.Navigation("JGredTanggaGaji");
+                });
+
             modelBuilder.Entity("SPMB_T.__Domain.Entities.Models._01Jadual.JKW", b =>
                 {
                     b.Navigation("AbBukuVot");
@@ -10043,6 +10257,11 @@ namespace SPMB_T._DataAccess.Migrations
                     b.Navigation("AkPenyataPemungut");
 
                     b.Navigation("JKWPTJBahagian");
+                });
+
+            modelBuilder.Entity("SPMB_T.__Domain.Entities.Models._01Jadual.JTanggaGaji", b =>
+                {
+                    b.Navigation("JGredTanggaGaji");
                 });
 
             modelBuilder.Entity("SPMB_T.__Domain.Entities.Models._02Daftar.DDaftarAwam", b =>

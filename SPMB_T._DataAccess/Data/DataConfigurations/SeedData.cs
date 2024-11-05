@@ -88,476 +88,448 @@ namespace SPMB_T._DataAccess.Data.DataConfigurations
                 );
             }
 
-            //if (context.JElaunPotongan.Any())
-            //{
+            if (context.JElaunPotongan.Any())
+            {
 
-            //}
-            //else
-            //{
-            //    context.JElaunPotongan.AddRange(
-            //        new JElaunPotongan
-            //        {
-            //            Kod = "G001",
-            //            Perihal = "GAJI POKOK",
-            //            IsGajiPokok = true
-            //        },
-            //        new JElaunPotongan
-            //        {
-            //            Kod = "P001",
-            //            Perihal = "KWSP"
-            //        }
-            //    );
-            //}
+            }
+            else
+            {
+                context.JElaunPotongan.AddRange(
+                    new JElaunPotongan
+                    {
+                        Kod = "G001",
+                        Perihal = "GAJI POKOK",
+                        IsGajiPokok = true
+                    },
+                    new JElaunPotongan
+                    {
+                        Kod = "P001",
+                        Perihal = "KWSP",
+                        IsKWSP = true
+                    },
+                    new JElaunPotongan
+                    {
+                        Kod = "P002",
+                        Perihal = "SOCSO",
+                        IsSOCSO = true
+                    }
+                );
+            }
 
-            //if (context.JTanggaGaji.Any())
-            //{
-            //    //return;
-            //}
-            //else
-            //{
-            //    context.JTanggaGaji.AddRange(
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 19,
-            //            KodSSPA = 1,
-            //            EnSijilKelayakan = EnSijilKelayakan.SPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 20,
-            //            KodSSPA = 1,
-            //            EnSijilKelayakan = EnSijilKelayakan.SPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 21,
-            //            KodSSPA = 2,
-            //            EnSijilKelayakan = EnSijilKelayakan.SPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 22,
-            //            KodSSPA = 2,
-            //            EnSijilKelayakan = EnSijilKelayakan.SPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 24,
-            //            KodSSPA = 2,
-            //            EnSijilKelayakan = EnSijilKelayakan.SPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 25,
-            //            KodSSPA = 3,
-            //            EnSijilKelayakan = EnSijilKelayakan.SPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 26,
-            //            KodSSPA = 3,
-            //            EnSijilKelayakan = EnSijilKelayakan.SPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 27,
-            //            KodSSPA = 4,
-            //            EnSijilKelayakan = EnSijilKelayakan.SPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 28,
-            //            KodSSPA = 4,
-            //            EnSijilKelayakan = EnSijilKelayakan.SPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 29,
-            //            KodSSPA = 5,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 30,
-            //            KodSSPA = 5,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 31,
-            //            KodSSPA = 6,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 32,
-            //            KodSSPA = 6,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 33,
-            //            KodSSPA = 6,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 34,
-            //            KodSSPA = 6,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 35,
-            //            KodSSPA = 6,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 36,
-            //            KodSSPA = 6,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 36,
-            //            KodSSPA = 7,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 37,
-            //            KodSSPA = 7,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 38,
-            //            KodSSPA = 7,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 39,
-            //            KodSSPA = 8,
-            //            EnSijilKelayakan = EnSijilKelayakan.DiplomaSTPM
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 41,
-            //            KodSSPA = 9,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 42,
-            //            KodSSPA = 9,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 43,
-            //            KodSSPA = 10,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 44,
-            //            KodSSPA = 10,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 45,
-            //            KodSSPA = 11,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 46,
-            //            KodSSPA = 11,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 47,
-            //            KodSSPA = 12,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 48,
-            //            KodSSPA = 12,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 51,
-            //            KodSSPA = 13,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 52,
-            //            KodSSPA = 13,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 53,
-            //            KodSSPA = 14,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 54,
-            //            KodSSPA = 14,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 55,
-            //            KodSSPA = 15,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        },
-            //        new JTanggaGaji
-            //        {
-            //            KodSSM = 56,
-            //            KodSSPA = 15,
-            //            EnSijilKelayakan = EnSijilKelayakan.Ijazah
-            //        }
-            //    );
-            //}
+            if (context.JTanggaGaji.Any())
+            {
+                //return;
+            }
+            else
+            {
+                context.JTanggaGaji.AddRange(
+                    new JTanggaGaji
+                    {
+                        KodSSM = "19",
+                        KodSSPA = "1"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "20",
+                        KodSSPA = "1"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "21",
+                        KodSSPA = "2"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "22",
+                        KodSSPA = "2"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "24",
+                        KodSSPA = "2"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "25",
+                        KodSSPA = "3"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "26",
+                        KodSSPA = "3"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "27",
+                        KodSSPA = "4"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "28",
+                        KodSSPA = "4"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "29",
+                        KodSSPA = "5"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "30",
+                        KodSSPA = "5"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "31",
+                        KodSSPA = "6"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "32",
+                        KodSSPA = "6"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "33",
+                        KodSSPA = "6"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "34",
+                        KodSSPA = "6"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "35",
+                        KodSSPA = "6"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "36",
+                        KodSSPA = "6"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "36",
+                        KodSSPA = "7"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "37",
+                        KodSSPA = "7"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "38",
+                        KodSSPA = "7"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "39",
+                        KodSSPA = "8"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "41",
+                        KodSSPA = "9"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "42",
+                        KodSSPA = "9"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "43",
+                        KodSSPA = "10"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "44",
+                        KodSSPA = "10"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "45",
+                        KodSSPA = "11"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "46",
+                        KodSSPA = "11"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "47",
+                        KodSSPA = "12"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "48",
+                        KodSSPA = "12"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "51",
+                        KodSSPA = "13"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "52",
+                        KodSSPA = "13"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "53",
+                        KodSSPA = "14"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "54",
+                        KodSSPA = "14"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "55",
+                        KodSSPA = "15"
+                    },
+                    new JTanggaGaji
+                    {
+                        KodSSM = "56",
+                        KodSSPA = "15"
+                    }
+                );
+            }
 
-            //if (context.JGredGaji.Any())
-            //{
-            //    //return;
-            //}
-            //else
-            //{
-            //    context.JGredGaji.AddRange(
-            //        new JGredGaji
-            //        {
-            //            Kod = "A",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pengangkutan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "AB",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pengangkutan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "AL",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pengangkutan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "AT",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pengangkutan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "AA",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pengangkutan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "B",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.BakatDanSeni
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "C",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Sains
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "DG",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "DH",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "DM",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "DS",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "DU",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "DUF",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "DUG",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "DV",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "E",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Ekonomi
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "F",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.SistemMaklumat
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "FA",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.SistemMaklumat
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "FT",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.SistemMaklumat
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "G",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pertanian
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "GV",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pertanian
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "H",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kemahiran
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "J",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kejuruteraan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "JA",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kejuruteraan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "KA",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Keselamatan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "KB",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Keselamatan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "KP",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Keselamatan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "L",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Perundangan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "LA",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Perundangan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "LS",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Perundangan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "M",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.TadbirDiplomatik
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "N",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pentadbiran
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "NP",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pentadbiran
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "NT",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pentadbiran
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "Q",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Penyelidikan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "S",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Sosial
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "U",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Perubatan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "UD",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Perubatan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "UF",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Perubatan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "UG",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Perubatan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "W",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kewangan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "WA",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kewangan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "WK",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kewangan
-            //        },
-            //        new JGredGaji
-            //        {
-            //            Kod = "R",
-            //            EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Mahir
-            //        }
-            //    );
-            //}
+            if (context.JGredGaji.Any())
+            {
+                //return;
+            }
+            else
+            {
+                context.JGredGaji.AddRange(
+                    new JGredGaji
+                    {
+                        Kod = "A",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pengangkutan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "AB",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pengangkutan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "AL",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pengangkutan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "AT",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pengangkutan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "AA",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pengangkutan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "B",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.BakatDanSeni
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "C",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Sains
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "DG",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "DH",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "DM",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "DS",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "DU",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "DUF",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "DUG",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "DV",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pendidikan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "E",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Ekonomi
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "F",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.SistemMaklumat
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "FA",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.SistemMaklumat
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "FT",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.SistemMaklumat
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "G",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pertanian
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "GV",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Pertanian
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "H",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kemahiran
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "J",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kejuruteraan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "JA",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kejuruteraan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "KA",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.KeselamatanDanPertahananAwam
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "KB",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.KeselamatanDanPertahananAwam
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "KP",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.KeselamatanDanPertahananAwam
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "L",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.PerundanganDanKehakiman
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "LA",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.PerundanganDanKehakiman
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "LS",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.PerundanganDanKehakiman
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "M",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.TadbirDanDiplomatik
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "N",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.PentadbiranDanSokongan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "NP",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.PentadbiranDanSokongan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "NT",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.PentadbiranDanSokongan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "Q",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.PentadbiranDanSokongan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "S",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Sosial
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "U",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.PerubatanDanKesihatan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "UD",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.PerubatanDanKesihatan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "UF",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.PerubatanDanKesihatan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "UG",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.PerubatanDanKesihatan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "W",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kewangan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "WA",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kewangan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "WK",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kewangan
+                    },
+                    new JGredGaji
+                    {
+                        Kod = "R",
+                        EnKlasifikasiPerkhidmatan = EnKlasifikasiPerkhidmatan.Kemahiran
+                    }
+                );
+            }
 
             if (context.JKategoriPCB.Any())
             {

@@ -55,6 +55,12 @@ namespace SPMB_T.__Domain.Entities._Statics
 
         public const string kodJTanggaGaji = "JD0014";
         public const string namaJTanggaGaji = "Jadual Tangga Gaji";
+
+        public const string kodJElaunPotongan = "JD0015";
+        public const string namaJElaunPotongan = "Jadual Elaun Dan Potongan";
+
+        public const string kodJGredTanggaGaji = "JD0016";
+        public const string namaJGredTanggaGaji = "Jadual Gred Dan Tangga Gaji";
         //
 
         // Daftar (DF)

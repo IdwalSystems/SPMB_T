@@ -58,6 +58,8 @@ namespace SPMB_T._DataAccess.Repositories.Interfaces
         IJKategoriPCB JKategoriPCB { get; }
         IJGredGaji JGredGaji { get; }
         IJTanggaGaji JTanggaGaji { get; }
+        IJElaunPotongan JElaunPotongan { get; }
+        IJGredTanggaGaji JGredTanggaGaji { get; }
         Task<int> Save();
     }
 }

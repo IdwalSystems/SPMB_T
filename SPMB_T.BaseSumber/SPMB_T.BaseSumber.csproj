@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <Folder Include="Controller\_04Sumber\" />
-    <Folder Include="Controller\_02Daftar\" />
     <Folder Include="Models\ViewModels\TextFiles\" />
   </ItemGroup>
 

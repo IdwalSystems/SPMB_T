@@ -1,4 +1,5 @@
-﻿using SPMB_T.__Domain.Entities.Models._01Jadual;
+﻿using SPMB_T._DataAccess.Repositories.Implementations;
+using SPMB_T.__Domain.Entities.Models._01Jadual;
 using SPMB_T.__Domain.Entities.Models._03Akaun;
 using SPMB_T._DataAccess.Data;
 using SPMB_T._DataAccess.Repositories.Interfaces;
@@ -36,6 +37,8 @@ namespace SPMB_T._DataAccess.Repositories.Implementations
             JKategoriPCB = new JKategoriPCBRepository(context);
             JGredGaji = new JGredGajiRepository(context);
             JTanggaGaji = new JTanggaGajiRepository(context);
+            JElaunPotongan = new JElaunPotonganRepository(context);
+            JGredTanggaGaji = new JGredTanggaGajiRepository(context);
 
             AkCartaRepo = new AkCartaRepository(_context);
             AkBankRepo = new AkBankRepository(_context);
@@ -174,6 +177,9 @@ namespace SPMB_T._DataAccess.Repositories.Implementations
         public IJGredGaji JGredGaji { get; }
 
         public IJTanggaGaji JTanggaGaji { get; }
+        public IJElaunPotongan JElaunPotongan { get; }
+
+        public IJGredTanggaGaji JGredTanggaGaji { get; }
 
         public void Dispose()
         {

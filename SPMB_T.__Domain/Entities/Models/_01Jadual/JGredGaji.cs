@@ -12,6 +12,7 @@ namespace SPMB_T.__Domain.Entities.Models._01Jadual
         public string? Kod { get; set; }
         [DisplayName("Klasifikasi Perkhidmatan")]
         public EnKlasifikasiPerkhidmatan EnKlasifikasiPerkhidmatan { get; set; }
+        public ICollection<JGredTanggaGaji>? JGredTanggaGaji { get; set; }
 
     }
 }

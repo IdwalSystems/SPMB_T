@@ -31,6 +31,7 @@ namespace SPMB_T._DataAccess.Data.DataConfigurations
             modelBuilder.Entity<JKonfigPenyata>().HasQueryFilter(m => EF.Property<int>(m, "FlHapus") == 0);
             modelBuilder.Entity<JTanggaGaji>().HasQueryFilter(m => EF.Property<int>(m, "FlHapus") == 0);
             modelBuilder.Entity<JGredGaji>().HasQueryFilter(m => EF.Property<int>(m, "FlHapus") == 0);
+            modelBuilder.Entity<JGredTanggaGaji>().HasQueryFilter(m => EF.Property<int>(m, "FlHapus") == 0);
 
             //
 
