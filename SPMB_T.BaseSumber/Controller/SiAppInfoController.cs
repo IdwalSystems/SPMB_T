@@ -8,7 +8,7 @@ using SPMB_T.BaseSumber.Models.ViewModels.Administrations;
 using System.Drawing;
 using System.Runtime.Versioning;
 
-namespace SPMB_T.Akaun.Controller
+namespace SPMB_T.BaseSumber.Controller
 {
     [Authorize(Roles = Init.superAdminAdminRole)]
     public class SiAppInfoController : Microsoft.AspNetCore.Mvc.Controller

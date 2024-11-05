@@ -17,7 +17,7 @@ using System.Drawing;
 using System.Runtime.Versioning;
 using System.Text.RegularExpressions;
 
-namespace SPMB_T.Akaun.Controller
+namespace SPMB_T.BaseSumber.Controller
 {
     public class AccountController : Microsoft.AspNetCore.Mvc.Controller
     {

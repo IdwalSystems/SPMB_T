@@ -1,6 +1,6 @@
 ﻿using SPMB_T.__Domain.Entities.Administrations;
 
-namespace YIT.Akaun.Models.ViewModels.Prints
+namespace SPMB_T.BaseSumber.Models.ViewModels.Prints
 {
     public class CommonPrintModel
     {

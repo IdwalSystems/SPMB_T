@@ -16,7 +16,7 @@ using System.Dynamic;
 using System.Security.Claims;
 using static SPMB_T.BaseSumber.Models.ViewModels.Administrations.UserClaimsViewModel;
 
-namespace SPMB_T.Akaun.Controller
+namespace SPMB_T.BaseSumber.Controller
 {
     [Authorize]
     public class HomeController : Microsoft.AspNetCore.Mvc.Controller
